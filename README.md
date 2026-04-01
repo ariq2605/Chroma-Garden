@@ -1,36 +1,45 @@
-Chroma Garden is a specialized Python-based tool designed for developers and designers who need a fast, "brutalist" interface for managing color palettes. It focuses on practical functionality, allowing you to pick, save, and organize HEX codes into local databases.
+# A brutalist color utility for the digital void.
 
-Key Features:
-Pixel-Perfect Selection: Includes a magnification tool to grab exact colors from any part of your screen.
+Chroma Garden is a Python-based desktop tool designed for rapid color palette generation and management. Built with a high-contrast aesthetic, it functions as a lightweight companion for developers and designers who need to maintain visual consistency across their projects.
 
-Palette Generation: Automatically suggests matching color schemes based on your primary selection.
+# Running from Source
 
-SQLite Storage: Saves your custom palettes to a local database for persistent access across sessions.
+Requirements
 
-High-Contrast UI: Designed with a neon-purple and black aesthetic to match a "Wired" or brutalist desktop environment.
+- Python 3.10+
 
-How to Use on Linux
-Since you are running CachyOS with Hyprland, you can integrate Chroma Garden directly into your workflow using the terminal.
+- Pillow
 
-1. Prerequisites
-Ensure you have Python and the necessary development headers installed:
+- pyperclip
 
-Bash
-sudo pacman -S python python-pip python-gobject
-2. Installation
-Clone the repository and install the required dependencies:
+Install dependencies:
 
-Bash
-git clone https://github.com/ariq2605/chroma-garden
-cd chroma-garden
-pip install -r requirements.txt
-3. Running the App
-You can launch the utility directly from your terminal:
+``pip install Pillow pyperclip``
 
-Bash
-python main.py
-4. Pro-Tip: Hyprland Bind
-To make it feel like a native part of your "ricing" setup, add a keybind to your hyprland.conf to launch it instantly:
+# Linux Extra Steps
 
-Code snippet
-bind = $mainMod, C, exec, python ~/path/to/chroma-garden/main.py
+On Linux, additional configuration may be required for UI rendering and input capture.
+
+1. Install tkinter (it is not always bundled with Python on Linux):
+
+`# Arch / CachyOS
+sudo pacman -S tk`
+
+`# Debian / Ubuntu
+sudo apt install python3-tk`
+
+`# Fedora
+sudo dnf install python3-tkinter`
+
+# 2. Wayland Compatibility:
+If you are using a Wayland compositor like Hyprland, you may need to set the environment variable to ensure the picker captures coordinates correctly:
+
+``GDK_BACKEND=x11 python main.py``
+
+# Run
+
+``python main.py``
+
+# Windows
+
+Just run the ``.exe`` — no setup needed.
